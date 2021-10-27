@@ -3,9 +3,12 @@ input.onButtonPressed(Button.A, function () {
     grade = 1
 })
 function alarm (duration: number) {
-    music.ringTone(262)
-    basic.pause(duration * 1000)
-    music.rest(music.beat(BeatFraction.Whole))
+    for (let index = 0; index < duration; index++) {
+        pins.digitalWritePin(DigitalPin.P0, 1)
+        basic.pause(500)
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        basic.pause(500)
+    }
 }
 input.onButtonPressed(Button.B, function () {
     grade = 0
